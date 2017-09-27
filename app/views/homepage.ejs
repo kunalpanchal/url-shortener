@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Url Shortner</title>
+  <link rel='stylesheet' href='/stylesheets/style.css' />
+
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+</head>
+
+<body>
+  <h1>Url Shortner</h1>
+  <div class="row">
+    <div class="col s12">
+      <div class="row">
+        <div class="input-field col s6">
+          <input placeholder="http://kunalpanchal.in" id="long-url" onkeydown="event.keyCode===13 && generateLink()" type="text" class="validate">
+          <label for="first_name">Enter the long Url</label>
+        </div>
+      </div>
+      <a class="waves-effect waves-light btn" onclick="generateLink()">Generate ShortURL</a>
+    </div>
+  </div>
+  <div class="row">
+    <h1><a id="short-url"></a></h1><br>
+  </div>
+
+  <!--Import jQuery before materialize.js-->
+  <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js"></script>
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+  <script>
+    function generateLink() {
+      $.ajax({
+        type: 'GET',
+        // data: JSON.stringify({ longUrl: $('#long-url').val() }),
+        contentType: 'application/json',
+        url: `/generate/${encodeURI($('#long-url').val())}`,
+        success: function (data) {
+          let shortUrl = data.shortUrl;
+          $('#short-url').html(shortUrl);
+          // swal({
+          //   title: "URL Generated!",
+          //   text: JSON.stringify(data),
+          //   icon: "success",
+          //   button: "OK",
+          // }).then((value) => {
+            // if (value) {
+            //   swal(`The Short Url "${shortUrl}" is copied to your clipboard.`);
+
+            // }
+          // });
+        }
+      });
+    }
+  </script>
+</body>
+
+</html>
