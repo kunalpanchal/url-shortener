@@ -23,7 +23,7 @@ module.exports = {
         }
     },
     generate: async (req, res, next) => {
-        const longUrl = req.params.longurl;
+        const longUrl = req.query.longUrl;
         const isLongUrlExists = await Links.findOne({ longUrl });
         if (isLongUrlExists) {
             return res.json({

@@ -38,7 +38,7 @@
         type: 'GET',
         // data: JSON.stringify({ longUrl: $('#long-url').val() }),
         contentType: 'application/json',
-        url: `/generate/${encodeURI($('#long-url').val())}`,
+        url: `/generate?longUrl=${encodeURI($('#long-url').val())}`,
         success: function (data) {
           let shortUrl = data.shortUrl;
           $('#short-url').html(shortUrl);
