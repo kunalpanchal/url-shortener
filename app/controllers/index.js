@@ -47,7 +47,7 @@ module.exports = {
                 links.fullHash = hash;
                 await links.save();
 
-                return res.json({ longUrl, shortUrl: getShortUrlWithHash(shortHash), hash, saltRounds });
+                return res.json({ longUrl, shortUrl: getShortUrlWithHash(shortHash)});
                 break;
             }
         }
