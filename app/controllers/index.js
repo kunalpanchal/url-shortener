@@ -61,5 +61,5 @@ function randChar() {
 }
 
 function getShortUrlWithHash(hashValue) {
-    return `http://localhost:3000/${hashValue}`;
+    return `${process.env.DOMAIN}/${hashValue}`;
 }
