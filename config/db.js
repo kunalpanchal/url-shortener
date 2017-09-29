@@ -1,7 +1,7 @@
 'use strict';
 const mongoose = require('mongoose');
 mongoose.Promise = global.Promise;
-const DB = 'mongodb://localhost:27017/url';
+const DB = process.env.DB;
 
 module.exports = async () => {
 
